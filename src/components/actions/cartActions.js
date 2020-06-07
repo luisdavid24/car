@@ -21,3 +21,10 @@ export const subtractQuantity=(id)=>{
         id
     }
 }
+// agregar acción qt
+export const addQuantity=(id)=>{
+    return{
+        type: ADD_QUANTITY,
+        id
+    }
+}

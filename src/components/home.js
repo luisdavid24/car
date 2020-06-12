@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 class Home extends Component{
     render(){
         let itemList = this.props.items.map(item=>{
+            //Aqui estamos guardado toda la informacion en una variable tipo let que
+            //que en este caso se va sobre escribir y hace la funcion de un arreglo. 
             return(
                 <div className="card" key={item.id}>
                         <div className="card-image">

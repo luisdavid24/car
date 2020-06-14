@@ -32,11 +32,13 @@ class Home extends Component{
         )
     }   
 }
+//Recibe el estado (o sea los datos) devuelve un objeto
 const mapStateToProps = (state)=>{
     return {
       items: state.items
     }
-  }
+}
+//Permite crear funciones que se usan cuando se llamas
 const mapDispatchToProps= (dispatch)=>{
     
     return{

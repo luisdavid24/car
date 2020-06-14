@@ -15,6 +15,40 @@ const initState={
     total: 0
 }
 const cartReducer=(state=initState,action)=>{
-    
+    //Componente interior del hogar
+    if(action.type===ADD_TO_CART){
+        let addedItem = state.items.find(item=> item.id === action.id)
+        //compruebe si el ID de la acción existe en los artículos agregados
+        let existed_item= state.addedItems.find(item=> action.id === item.id)
+        if(existed_item)
+        {   addedItem.quantity += 1 
+            return{
+               ...state,
+                total: state.total + addedItem.price 
+                 }
+       }else{
+            addedItem.quantity = 1;
+            //Calculando el total
+            let newTotal = state.total + addedItem.price 
+            return{
+                ...state,
+                addedItems: [...state.addedItems, addedItem],
+                total : newTotal
+            }
+        }  
+    }
+    if(action.type === REMOVE_ITEM){
+        let itemToRemove= state.addedItems.find(item=> action.id === item.id)
+        let new_items = state.addedItems.filter(item=> action.id !== item.id)
+        
+        //calculando el total 
+        let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
+        console.log(itemToRemove)
+        return{
+            ...state,
+            addedItems: new_items,
+            total: newTotal
+        }
+    }
 }    
 export default cartReducer;

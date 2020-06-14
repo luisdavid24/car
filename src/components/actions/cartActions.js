@@ -13,7 +13,7 @@ export const removeItem=(id)=>{
         id
     
     }
-}
+} 
 //resta la acción qt
 export const subtractQuantity=(id)=>{
     return{

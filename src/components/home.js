@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-// import { addToCart } from './actions/cartActions'
+import { connect } from 'react-redux';
+import { addToCart } from './actions/cartActions';
 class Home extends Component{
     //Esto el handleClick se encarga de manejar cuando da click
     handleClick = (id)=>{

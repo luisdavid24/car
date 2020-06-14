@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 // import { addToCart } from './actions/cartActions'
 class Home extends Component{
+    //Esto el handleClick se encarga de manejar cuando da click
+    handleClick = (id)=>{
+        this.props.addToCart(id); 
+    }
+
     render(){
         let itemList = this.props.items.map(item=>{
             //Aqui estamos guardado toda la informacion en una variable tipo let que
             //que en este caso se va sobre escribir y hace la funcion de un arreglo. 
             return(
-                <div className="card" key={item.id}>
-                        <div className="card-image">
+                <div key={item.id}>
+                        <div >
                             <img src={item.img} alt={item.title}/>
-                            <span className="card-title">{item.title}</span>
-                            <span to="/" className="btn-floating halfway-fab waves-effect waves-light red" onClick={()=>{this.handleClick(item.id)}}><i className="material-icons">add</i></span>
+                            <span >{item.title}</span>
+                            <span to="/" onClick={()=>{this.handleClick(item.id)}}><i className="material-icons">add</i></span>
                         </div>
 
-                        <div className="card-content">
+                        <div>
                             <p>{item.desc}</p>
                             <p><b>Price: {item.price}$</b></p>
                         </div>
@@ -40,7 +45,6 @@ const mapStateToProps = (state)=>{
 }
 //Permite crear funciones que se usan cuando se llamas
 const mapDispatchToProps= (dispatch)=>{
-    
     return{
         addToCart: (id)=>{dispatch(addToCart(id))}
     }

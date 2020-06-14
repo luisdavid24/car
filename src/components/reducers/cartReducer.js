@@ -15,7 +15,7 @@ const initState={
     total: 0
 }
 const cartReducer=(state=initState,action)=>{
-    //Componente interior del hogar
+    //Aqui la accion es agregar al carrito
     if(action.type===ADD_TO_CART){
         let addedItem = state.items.find(item=> item.id === action.id)
         //compruebe si el ID de la acción existe en los artículos agregados
@@ -37,10 +37,10 @@ const cartReducer=(state=initState,action)=>{
             }
         }  
     }
+    //Aqui se van a quitar elementos del carrito :)
     if(action.type === REMOVE_ITEM){
         let itemToRemove= state.addedItems.find(item=> action.id === item.id)
         let new_items = state.addedItems.filter(item=> action.id !== item.id)
-        
         //calculando el total 
         let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
         console.log(itemToRemove)
@@ -49,6 +49,16 @@ const cartReducer=(state=initState,action)=>{
             addedItems: new_items,
             total: newTotal
         }
+    }
+    //Aqui se esta mirando si se agregando mas elemento del mismo tipo
+    if(action.type=== ADD_QUANTITY){
+        let addedItem = state.items.find(item=> item.id === action.id)
+          addedItem.quantity += 1 
+          let newTotal = state.total + addedItem.price
+          return{
+              ...state,
+              total: newTotal
+          }
     }
 }    
 export default cartReducer;

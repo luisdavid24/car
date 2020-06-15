@@ -81,5 +81,23 @@ const cartReducer=(state=initState,action)=>{
                 total: newTotal
             }
         }
-    }   
+        
+    } 
+    //Aqui el tipo es agregar el carrito
+    if(action.type=== ADD_SHIPPING){
+        return{
+            ...state,
+            total: state.total + 6
+        }
+    }
+    //Aqui envio de sub
+    if(action.type=== 'SUB_SHIPPING'){
+        return{
+            ...state,
+            total: state.total - 6
+        }
+    }else{
+    return state
+    }
+}  
 export default cartReducer;

@@ -3,6 +3,8 @@ import Item2 from '../../images/fresas.jpg'
 import Item3 from '../../images/magos.jpg'
 import Item4 from '../../images/peras.jpg'
 import Item5 from '../../images/sandia.jpg'
+import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,ADD_SHIPPING } from '../actions/action-types/cart-actions'
+
 const initState={
     items:[
         {id:1,title:'Banana', desc: "soy una banana", price:110,img:Item1},

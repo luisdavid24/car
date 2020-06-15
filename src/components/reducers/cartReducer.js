@@ -98,8 +98,9 @@ const cartReducer=(state=initState,action)=>{
             ...state,
             total: state.total - 6
         }
-    }else{
-    return state
+    }
+    else{
+        return state
     }
 }  
 export default cartReducer;
